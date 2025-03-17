@@ -1,6 +1,6 @@
 function adicionarTarefa() {
 
-    let mensagem = document.getElementById("mensagem") //mensagem apresentada após digitar a tarefa
+    const mensagem = document.getElementById("mensagem") //mensagem apresentada após digitar a tarefa
     let positivo = "Tarefa adcionada com sucesso!"
     let erro = "Por favor, digite uma tarefa válida!";
 
@@ -9,11 +9,12 @@ function adicionarTarefa() {
     
     //verificando se o campo está vazio
     if(tarefa === "") {
+      mensagem.style.color = "#A34743"; // alterando a cor da mensagem de erro
       mensagem.textContent = erro
       return;
     } else {
-
-    mensagem.textContent = positivo; //apresentando mensagem apresentada após digitar a tarefa
+      mensagem.style.color = "#28A745"; // alterando a cor da mensagem de positivo
+      mensagem.textContent = positivo; //apresentando mensagem apresentada após digitar a tarefa
 
     //criando variável para a lista de tarefas
     let listaTarefas = document.getElementById("listaTarefas");
