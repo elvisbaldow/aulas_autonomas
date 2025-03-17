@@ -1,19 +1,19 @@
 function adicionarTarefa() {
 
-    let mensagem = "Tarefa adicionada com sucesso!"; //mensagem apresentada após digitar a tarefa
+    let mensagem = document.getElementById("mensagem") //mensagem apresentada após digitar a tarefa
+    let positivo = "Tarefa adcionada com sucesso!"
+    let erro = "Por favor, digite uma tarefa válida!";
 
     let inputTarefa = document.getElementById("inputTarefa"); //pegando o valor do input
     let tarefa = inputTarefa.value.trim(); //pegando o que foi digitado no input | .trim() - remove espaços em branco do inicio e final da string
     
     //verificando se o campo está vazio
     if(tarefa === "") {
-      mensagem = "Por favor, digite uma tarefa válida!";
-      document.getElementById("mensagem").textContent = mensagem;
+      mensagem.textContent = erro
       return;
     } else {
 
-    console.log(tarefa);
-    document.getElementById("mensagem").textContent = mensagem; //apresentando mensagem apresentada após digitar a tarefa
+    mensagem.textContent = positivo; //apresentando mensagem apresentada após digitar a tarefa
 
     //criando variável para a lista de tarefas
     let listaTarefas = document.getElementById("listaTarefas");
