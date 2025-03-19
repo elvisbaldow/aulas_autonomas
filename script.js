@@ -1,36 +1,36 @@
-function adicionarTarefa() {
+let tarefas = []; // array fora do escopo da função para que todas as funções possam acessá-lo. Escopo Geral.
 
-    const mensagem = document.getElementById("mensagem") //mensagem apresentada após digitar a tarefa
-    let positivo = "Tarefa adcionada com sucesso!"
+function adicionarTarefa() {
+    const mensagem = document.getElementById("mensagem"); 
+    let positivo = "Tarefa adcionada com sucesso!";
     let erro = "Por favor, digite uma tarefa válida!";
 
-    let inputTarefa = document.getElementById("inputTarefa"); //pegando o valor do input
-    let tarefa = inputTarefa.value.trim(); //pegando o que foi digitado no input | .trim() - remove espaços em branco do inicio e final da string
-    
-    //verificando se o campo está vazio
-    if(tarefa === "") {
-      mensagem.style.color = "#A34743"; // alterando a cor da mensagem de erro
-      mensagem.textContent = erro
-      return;
-    } else {
-      mensagem.style.color = "#28A745"; // alterando a cor da mensagem de positivo
-      mensagem.textContent = positivo; //apresentando mensagem apresentada após digitar a tarefa
+    let inputTarefa = document.getElementById("inputTarefa"); 
+    let tarefa = inputTarefa.value.trim(); 
 
-    //criando variável para a lista de tarefas
-    let listaTarefas = document.getElementById("listaTarefas");
+        if(tarefa === "") {
+          mensagem.style.color = "#A34743"; 
+          mensagem.textContent = erro;
+        } else {
+          mensagem.style.color = "#28A745"; 
+          mensagem.textContent = positivo;
+          
+          tarefas.push(tarefa);
+          renderizarTarefas();
+        }
 
-    //criando variável para a nova tarefa, add itens na lista
-    let novaTarefa = document.createElement("li");
+  inputTarefa.value = "";
+}
 
-    //variável novaTarefa recebe o valor de tarefa (add pelo usuário)
-    novaTarefa.textContent = tarefa;
-    //indicando onde vai ser criado o novo item (li)
-    listaTarefas.appendChild(novaTarefa); //appendChild - anexando no item filho (nome do item)
+  function renderizarTarefas(){
 
+    const listaTarefas = document.getElementById("listaTarefas");
+    listaTarefas.innerHTML = ""; //limpa a lista de tarefas para não duplicar as tarefas.
+
+    let i = 0;
+    for (i; i < tarefas.length; i++) {
+      let novaTarefa = document.createElement("li");
+      novaTarefa.textContent = tarefas[i];
+      listaTarefas.appendChild(novaTarefa);
     }
-
-    //apagar o texto do input
-    inputTarefa.value = "";
-
-    
   }
